@@ -9,7 +9,7 @@ export default function News({news}) {
         <ul>
     
         {news.length!==0 && news.hits.map((newsPost) => (
-          <li key={newsPost.title}>
+          <li key={newsPost.objectID}>
               <a href={newsPost.url} target="_blank">
               {newsPost.title}
               </a>
