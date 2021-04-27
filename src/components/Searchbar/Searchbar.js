@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./Searchbar.css";
 
-export default function Searchbar({news, url, setUrl, query, setQuery}) {
-    const[inputValue, setInputValue] = useState( " ");
+export default function Searchbar({ setUrl, query, setQuery}) {
+    //const[inputValue, setInputValue] = useState( " ");
 
-    function handleOnKeyDown({ keyCode, target }){
+    function handleOnKeyDown({ keyCode }){
         if(keyCode === 13) {
           setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`)
       }
     }
 
-    function handleInputValue({target}){
-        setInputValue(target.value);
-    }
+    // function handleInputValue({target}){
+    //     setInputValue(target.value);
+    // }
 
   //function compareInput(){
     //let searchString = inputValue.toLowerCase().split(' ')
@@ -33,7 +33,6 @@ export default function Searchbar({news, url, setUrl, query, setQuery}) {
 
   return (
     <div>
-
         <input 
             onKeyDown={handleOnKeyDown} 
             onChange={event => setQuery(event.target.value)}
