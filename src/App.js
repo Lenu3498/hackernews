@@ -3,10 +3,11 @@ import './App.css';
 import News from './components/News/News.js'
 import Searchbar from './components/Searchbar/Searchbar.js'
 
-function App() {
+function App( {inputValue}) {
+  console.log(inputValue);
   const [news, setNews] = useState({ hits: []});
   // const [query, setQuery] = useState('');
-  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=react',);
+  const [url, setUrl] = useState(`http://hn.algolia.com/api/v1/search?query=${inputValue}`);
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
 
