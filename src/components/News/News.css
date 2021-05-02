@@ -1,3 +1,5 @@
+
+
 a {
     color: black;
     text-decoration: none;
@@ -5,6 +7,17 @@ a {
     display: inline-block;
   }
 
+ul {
+  list-style: none;
+  padding: 0;
+}
 li {
-    text-align: left;
+  padding: 10px 10px;
+  background-color: white;
+  border-bottom: 0.5px solid #b3c6b1;
+  text-align: left;
+}
+
+.information {
+  color: #169722;
 }

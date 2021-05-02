@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Searchbar.css";
 
-export default function Searchbar({ setUrl, query, setQuery}) {
-    //const[inputValue, setInputValue] = useState( " ");
+export default function Searchbar({ setUrl }) {
+    const[inputValue, setInputValue] = useState(" ");
 
     function handleOnKeyDown({ keyCode }){
         if(keyCode === 13) {
-          setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`)
+          setUrl(`http://hn.algolia.com/api/v1/search?query=${inputValue}`)
       }
     }
 
-    // function handleInputValue({target}){
-    //     setInputValue(target.value);
-    // }
+    function handleInputValue({target}){
+        setInputValue(target.value);
+    }
 
   //function compareInput(){
     //let searchString = inputValue.toLowerCase().split(' ')
@@ -32,19 +32,20 @@ export default function Searchbar({ setUrl, query, setQuery}) {
   //}
 
   return (
-    <div>
+    <div className="container__searchbar">
         <input 
+            className="input__searchbar"
             onKeyDown={handleOnKeyDown} 
-            onChange={event => setQuery(event.target.value)}
-            type="text" 
-            value={query}
+            onChange={handleInputValue}
+            //{event => setQuery(event.target.value)}
+            type="search" 
+            value={inputValue}
             placeholder="Search.."/>
         <button
-            type="button"
+            //type="button"
             onClick={() =>
-            setUrl(`http://hn.algolia.com/api/v1/search?query=${query}`)
-        }
-      >
+            setUrl(`http://hn.algolia.com/api/v1/search?query=${inputValue}`)
+        }>
             <i className = "fa fa-search"></i>
         </button>
 

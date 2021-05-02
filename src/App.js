@@ -5,29 +5,31 @@ import Searchbar from './components/Searchbar/Searchbar.js'
 
 function App() {
   const [news, setNews] = useState({ hits: []});
-  const [query, setQuery] = useState('');
-  const [url, setUrl] = useState(
-  'https://hn.algolia.com/api/v1/search?query=react',
-);
+  // const [query, setQuery] = useState('');
+  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=react',);
   const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+
 
   useEffect(() => {
     const getNews = async () => {
-    setIsLoading(true);
+      setIsError(false);
+      setIsLoading(true);
     try {
      const response = await fetch(url)
        if (response.ok) {
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
+        // console.log(jsonResponse);
         setNews(jsonResponse);
-        //return;
+        setIsLoading(false);
+        return;
       }
       throw new Error("Request Failed!");
     } catch (error) {
-      console.log(error);
+      setIsError(true);
     }
 
-    setIsLoading(false);
+    
   };
 
   getNews();
@@ -38,11 +40,26 @@ function App() {
 
   return (
     <div className="App">
-      <header>
-        HACKER NEWS
-      <Searchbar news={news} url={url} setUrl={setUrl} query={query} setQuery={setQuery}/>
+
+      <header className="header">
+          <h1>HACKER NEWS</h1>    
       </header>
-      <News news={news} isLoading={isLoading}/>
+
+      <Searchbar className="searchbar" 
+      news={news} 
+      url={url} 
+      setUrl={setUrl} 
+      // query={query} 
+      // setQuery={setQuery}
+      />
+      
+      <main>
+      <News news={news} isLoading={isLoading} isError={isError} setIsError= {setIsError}/>
+      </main>
+      
+      <footer className="footer">
+        <p>© 2021</p>
+      </footer>
     </div>
   );
 }
