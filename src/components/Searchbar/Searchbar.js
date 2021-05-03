@@ -6,7 +6,7 @@ export default function Searchbar({ setUrl }) {
 
     function handleOnKeyDown({ keyCode }){
         if(keyCode === 13) {
-          setUrl(`http://hn.algolia.com/api/v1/search?query=${inputValue}`)
+          setUrl(`https://hn.algolia.com/api/v1/search?query=${inputValue}`)
       }
     }
 
@@ -25,7 +25,7 @@ export default function Searchbar({ setUrl }) {
             placeholder="Search..."/>
         <button
             onClick={() =>
-            setUrl(`http://hn.algolia.com/api/v1/search?query=${inputValue}`)
+            setUrl(`https://hn.algolia.com/api/v1/search?query=${inputValue}`)
         }>
             <i className = "fa fa-search"></i>
         </button>
