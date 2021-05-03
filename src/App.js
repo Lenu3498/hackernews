@@ -7,7 +7,7 @@ function App( {inputValue}) {
   console.log(inputValue);
   const [news, setNews] = useState({ hits: []});
   // const [query, setQuery] = useState('');
-  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=hackernews',
+  const [url, setUrl] = useState('https://hn.algolia.com/api/v1/search?query=react',
   );
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
